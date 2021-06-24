@@ -9,13 +9,17 @@
 
 <em>NMAP DHCP Discovery</em>
 
-* nmap --script broadcast-dhcp-discover -e bond0
+* sudo nmap --script broadcast-dhcp-discover -e bond0
     * Use broadcast-dhcp-discover script on bond0 interface
 
 <em>NMAP UPnP Discovery</em>
 
-* nmap -sV --script=broadcast-upnp-info -T4 192.168.1.0/24
+* sudo nmap -sV --script=broadcast-upnp-info -T4 192.168.1.0/24
     * Use broadcast-upnp-info plugin to get universal plug and play devices
+
+<em>NMAP IP from MAC</em>
+
+* nmap -sP 192.168.1.0/24 >/dev/null && arp -an | grep <mac-address> | awk '{print $2}' | sed 's/[()]//g'
 
 <em>Kismet Wireless Sniffer</em>
 * Kismet README: https://www.kismetwireless.net/docs/readme_group.html
